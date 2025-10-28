@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pawfect Grooming</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Header with nav -->
+  <header>
+    <div class="container">
+      <h1 class="logo">🐾 Pawfect Grooming</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" id="home-link" class="nav-link active">Home</a></li>
+          <li><a href="#" id="services-link" class="nav-link">Services</a></li>
+          <li><a href="#" id="rating-link" class="nav-link">Rating</a></li>
+          <li><a href="#" id="contact-link" class="nav-link">Contact</a></li>
+          <li><a href="#" id="login-logout-btn" class="btn">Login</a></li>
+          <li><a href="#" class="btn pet-btn">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Pet Section -->
+  <section class="pet" id="pet-section">
+    <div class="pet-content">
+      <h2>Your Pet Deserves the Pawfect Pampering</h2>
+      <p>Professional grooming services for your furry friends.</p>
+      <a href="#" class="btn pet-btn">Schedule an Appointment</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services-section" style="display:none;">
+    <div class="container">
+      <h2 class="section-title">Our Grooming Services</h2>
+      <ul class="service-list">
+        <li><strong>Bath & Brush:</strong> Gentle cleaning with pet-safe shampoos.</li>
+        <li><strong>Haircut & Styling:</strong> Custom trims for all breeds.</li>
+        <li><strong>Nail Trimming:</strong> Safe and careful nail maintenance.</li>
+        <li><strong>Ear Cleaning:</strong> Comfortable and hygienic ear care.</li>
+        <li><strong>Full Groom Package:</strong> Everything your pet needs in one session.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Rating Section -->
+  <section class="rating-section" id="rating-section" style="display:none;">
+    <div class="container">
+      <h2 class="section-title">Rate Our Service</h2>
+      
+      <!-- Rating Form -->
+      <form id="rating-form" style="max-width:500px; margin:0 auto 40px; text-align:center;">
+        <label>Your Rating:</label>
+        <div class="star-rating">
+          <span data-value="5">☆</span>
+          <span data-value="4">☆</span>
+          <span data-value="3">☆</span>
+          <span data-value="2">☆</span>
+          <span data-value="1">☆</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+
+        <label for="comment">Your Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" placeholder="Write your suggestions..." required style="width:100%; padding:8px; margin-bottom:15px;"></textarea>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+
+      <!-- Previous Ratings / Comments -->
+      <h3 style="text-align:center; color:#e36464; margin-bottom:15px;">User Feedback</h3>
+      <div id="ratings-list" style="max-width:700px; margin:0 auto;"></div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div id="booking-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:8px; width:90%; max-width:500px; position:relative;">
+      <h2 style="margin-bottom:20px;">Book an Appointment</h2>
+      <form id="booking-form">
+        <div style="margin-bottom: 15px;">
+          <label>Pet's Name:</label><br>
+          <input type="text" name="petName" required style="width:100%; padding:8px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Type of Pet:</label><br>
+          <select name="petType" required style="width:100%; padding:8px;">
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Service:</label><br>
+          <select name="service" required style="width:100%; padding:8px;">
+            <option value="Bath & Brush">Bath & Brush</option>
+            <option value="Haircut & Styling">Haircut & Styling</option>
+            <option value="Nail Trim">Nail Trim</option>
+            <option value="Full Groom">Full Groom</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Date & Time:</label><br>
+          <input type="datetime-local" name="appointmentDate" required style="width:100%; padding:8px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Your Contact Number:</label><br>
+          <input type="tel" name="contact" required style="width:100%; padding:8px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Your Address:</label><br>
+          <textarea name="address" required placeholder="Enter your complete address" style="width:100%; padding:8px; height:70px;"></textarea>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Payment Method:</label><br>
+          <select name="paymentMethod" required style="width:100%; padding:8px;">
+            <option value="">Select Payment Type</option>
+            <option value="Cash">Cash</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="PhonePe">PhonePe</option>
+            <option value="Paytm">Paytm</option>
+            <option value="Card">Card</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Confirm Booking</button>
+        <button type="button" id="close-booking" style="margin-left:10px; padding:10px 20px; border:none; background:#ccc; border-radius:5px;">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <!-- Contact Section -->
+  <section id="contact-section" style="display:none;">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p style="text-align:center; margin-bottom:20px;">***We’d love to hear from you!***<br>*** Fill out the form and*** <br>***we’ll get back to you soon.***</p>
+      <form id="contact-form" style="max-width:500px; margin:0 auto; text-align:center;">
+        <input type="text" id="contact-name" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;">
+        <input type="email" id="contact-email" placeholder="Your Email" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;">
+        <textarea id="contact-message" placeholder="Your Message" rows="5" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;"></textarea>
+        <button type="submit" class="btn">Send Message</button><br><br>
+        <a href="https://wa.me/+918077496931" target="_blank" class="btn">Chat on WhatsApp</a><br><br>
+        <a href="tel:+918077496931" class="btn">Call Now 📞</a><br><br>
+      </form>
+    </div>
+    <div class="map-container" style="margin-top:20px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13781.384574923808!2d78.0075008!3d30.28420605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1760772265081!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>Happy Clients</h2>
+    <div class="carousel">
+      <button id="prev">&#10094;</button>
+      <div class="carousel-track" id="carouselTrack"></div>
+      <button id="next">&#10095;</button>
+    </div>
+  </section>
+  
+  <!-- Achievements Section -->
+  <section id="achievements">
+    <h2>🏆 Our Achievements</h2>
+    <div class="achievement-container">
+      <div class="achievement-card">
+        <h3>🐶 100+ Pets Groomed</h3>
+        <p>Trusted by hundreds of pet parents for top-quality grooming and care.</p>
+      </div>
+      <div class="achievement-card">
+        <h3>😊 80+ Happy Customers</h3>
+        <p>We believe in making tails wag and smiles shine every single day.</p>
+      </div>
+      <div class="achievement-card">
+        <h3>⭐ Rated 3.4 on PetCare Reviews</h3>
+        <p>Our clients love our attention to detail and compassionate service.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pet-care">
+    <h2>Pet Care Tips & Recommendations</h2>
+
+    <div class="pet-care-container">
+
+      <div class="pet-care-card">
+        <h3>How to Pet</h3>
+        <ul id="howToPet">
+         <li>Approach slowly and let your pet sniff you.</li>
+         <li>Pet gently around the head and back.</li>
+         <li>Always watch for signs of discomfort.</li>
+        </ul>
+      </div>
+
+      <div class="pet-care-card">
+        <h3>Pet Care Tips</h3>
+        <ul id="petTips">
+          <li>Feed a balanced diet suitable for your pet's age.</li>
+          <li>Regular exercise is important for physical and mental health.</li>
+          <li>Schedule routine vet check-ups and vaccinations.</li>
+        </ul>
+      </div>
+
+      <div class="pet-care-card">
+        <h3>Recommended Products</h3>
+        <ul id="petProducts">
+          <li>Shampoo: PetSafe Oatmeal Shampoo</li>
+          <li>Food: Royal Canin Puppy/Kitten Formula</li>
+          <li>Toys: Chew toys and interactive balls</li>
+        </ul>
+      </div>
+   
+    </div>
+  </section>
+
+  <section id="adopt">
+    <h2>🐾 Adopt a Pet ❤️</h2>
+    <p style="text-align:center; color:#555; margin-bottom:20px;">
+      Give a loving home to a furry friend. Meet our adorable pets waiting for adoption!
+    </p>
+
+    <div class="adopt-container">
+      <div class="pet-card">
+        <img src="adopt/dog1.jpg" alt="Bella">
+        <h4>Bella</h4>
+        <p>3-year-old Labrador, vaccinated and friendly.</p>
+        <button class="btn adopt-btn">Adopt Me</button>
+      </div>
+
+      <div class="pet-card">
+        <img src="adopt/cat1.jpg" alt="Milo">
+        <h4>Milo</h4>
+        <p>2-year-old Cat, playful and loves cuddles.</p>
+        <button class="btn adopt-btn">Adopt Me</button>
+      </div>
+
+      <div class="pet-card">
+        <img src="adopt/dog2.jpg" alt="Rocky">
+        <h4>Rocky</h4>
+        <p>1-year-old Beagle, full of energy and joy.</p>
+        <button class="btn adopt-btn">Adopt Me</button>
+      </div>
+
+      <div class="pet-card">
+        <img src="adopt/cat2.jpg" alt="Luna">
+        <h4>Luna</h4>
+        <p>4-year-old Persian, calm and affectionate.</p>
+        <button class="btn adopt-btn">Adopt Me</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="shop">
+    <h2>Shop for Your Pets</h2>
+    <button id="shopBtn">Shop Now 🛒</button>
+
+    <div id="shopOptions" class="hidden">
+      <div class="shop-category">
+        <h3>Dogs</h3>
+        <div class="products" id="dogProducts"></div>
+      </div>
+      <div class="shop-category">
+        <h3>Cats</h3>
+        <div class="products" id="catProducts"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💬 Chatbot Floating Button & Box -->
+  <div id="chatbot-container">
+    <button id="chatbot-toggle" class="chatbot-btn">💬 Chat with us</button>
+    <div id="chatbox" class="hidden">
+      <div class="chat-header">Pawfect Assistant 🐾</div>
+      <div class="chat-body" id="chat-body">
+        <div class="bot-msg">Hi there! 👋 How can I help you today?</div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Type a message..." />
+        <button id="chat-send">➤</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Footer -->
+  <footer style="background:#f9cfcf; padding:20px; text-align:center; color:#333; margin-top:40px;">
+    <p>@ 2025 Pawfect Grooming | Designed by <br>Mohd Anas Ansari<br>Janvi Saini <br> Shivam Bijalwan</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
