@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pawfect Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1 class="logo">🐾 Pawfect Grooming</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🛒 Shop Section -->
+  <section id="shop" style="padding-top:60px;">
+    <h2>Shop for Your Pets</h2>
+    <div id="shopOptions">
+      <div class="shop-category">
+        <h3>Dogs</h3>
+        <div class="products" id="dogProducts"></div>
+      </div>
+      <div class="shop-category">
+        <h3>Cats</h3>
+        <div class="products" id="catProducts"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#f9cfcf; padding:20px; text-align:center; color:#333; margin-top:40px;">
+    <p>@ 2025 Pawfect Grooming | Designed by <br>Mohd Anas Ansari<br>Janvi Saini <br> Shivam Bijalwan</p>
+  </footer>
+
+  <!-- JS for product rendering -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dogProductsData = [
+        {name: "Dog Food", price: "₹80", img:"dog/dog-food.jpg"},
+        {name: "Dog Treats", price: "₹30", img:"dog/dog-treat.jpg"},
+        {name: "Dog Toys", price: "₹40", img:"dog/dog-toys.jpg"},
+        {name: "Grooming Supplies", price: "₹30", img:"dog/grooming.jpg"},
+        {name: "Oral Care", price: "₹30", img:"dog/oral.jpg"},
+        {name: "Walk Essentials", price: "₹70", img:"dog/walk.jpg"},
+        {name: "Beds & Mats", price: "₹1000", img:"dog/beds.jpg"},
+        {name: "Supplements", price: "₹500", img:"dog/supl.jpg"},
+        {name: "Bowls & Diners", price: "₹700", img:"dog/bowl.jpg"},
+        {name: "Dog Shoes", price: "₹400", img:"dog/shoes.jpg"},
+        {name: "Dog Accessories", price: "₹240", img:"dog/dog-accessories.jpg"}
+      ];
+
+      const catProductsData = [
+        {name: "Cat Food", price: "₹80", img:"cat/cat-food.jpg"},
+        {name: "Cat Treats", price: "₹30", img:"cat/cat-treat.jpg"},
+        {name: "Cat Litter & Supplies", price: "₹40", img:"cat/catlitter.jpg"},
+        {name: "Cat Toys", price: "₹500", img:"cat/cat-toys.jpg"},
+        {name: "Scratchers", price: "₹400", img:"cat/skatechers.jpg"},
+        {name: "Grooming Essentials", price: "₹50", img:"cat/groom.jpg"},
+        {name: "Cat Walk", price: "₹100", img:"cat/boots.jpg"},
+        {name: "Houses & Tents", price: "₹1500", img:"cat/house.jpg"}
+      ];
+
+      function renderProducts(containerId, products) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        products.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <img src="${p.img}" alt="${p.name}">
+            <h4>${p.name}</h4>
+            <p>${p.price}</p>
+            <button>Buy Now</button>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      renderProducts('dogProducts', dogProductsData);
+      renderProducts('catProducts', catProductsData);
+    });
+  </script>
+
+  <!-- Include your existing main.js (for Buy Now popups etc.) -->
+  <script src="main.js"></script>
+</body>
+</html>
